@@ -1,4 +1,4 @@
-const post_id = document.querySelector('#post_id').value;
+//const post_id = document.querySelector('#post_id').value;
 
 function onButtonClick(){
     document.getElementById('textInput').className="show";
@@ -10,14 +10,18 @@ function onButtonClick(){
     event.preventDefault();
   
     const userComment = document.querySelector('#textInput').value.trim();
+    // const post_id = document.querySelector('#post_id').value; 
+    const post_id = event.target.getAttribute('data-post-id'); // Extract post_id from data attribute
+
+    console.log(post_id);
   
     if (userComment) { 
-      console.log(userComment);
+      //console.log(post_id);
   
       try {
         const response = await fetch('/api/comments', {
           method: 'POST',
-          body: JSON.stringify({ body: userComment, post_id: post_id }),
+          body: JSON.stringify({ body: userComment }),
           headers: {
             'Content-Type': 'application/json',
           },
@@ -26,7 +30,7 @@ function onButtonClick(){
         if (response.ok) {
           document.location.replace('/');
         } else {
-          console.log(response.ok);
+          //console.log(post_id);
           alert('Failed to create comment');
         }
       } catch (err) {

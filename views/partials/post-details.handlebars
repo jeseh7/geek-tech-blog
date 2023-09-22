@@ -7,9 +7,9 @@
      <p>{{content}}</p>
   </div>
   <p class="hide" id="commentWord">Comment</p>
-  <form class="form new-comment-form">
+  <form class="form new-comment-form" data-post-id="{{post_id}}">
     <input class="hide" type="text" id="textInput" placeholder="Enter comment here" />
-    <input type="hidden" id="post_id" value="{{post_id}}"/>
+    {{!-- <input type="hidden" id="post_id" value="{{post_id}}"/> --}}
     <button type="submit" class="hide" id="submit">Submit</button>
   </form>
   <div class="card-footer">
