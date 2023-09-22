@@ -20,7 +20,7 @@ require('dotenv').config();
 // Check if the app is running in a production environment (Heroku)
 if (process.env.NODE_ENV === 'production') {
   // Use the DATABASE_URL environment variable provided by Heroku
-  var sequelize = new Sequelize(process.env.DATABASE_URL);
+  var sequelize = new Sequelize(process.env.JAWSDB_AQUA_URL);
 } else {
   // Use your local development configuration
   var sequelize = new Sequelize(
