@@ -1,10 +1,20 @@
 <section class="card">
-  <!-- The contents of this card links to the gallery page using the gallery ID -->
-  <a href="/:post_id/{{id}}">
-    <!-- The card contains the gallery name as the card header -->
-    <header>{{post.title}}</header>
-    <!-- The card contains the first painting of the gallery -->
-    <p></p>
-    <!--<img src="/images/{{paintings.[0].filename}}" alt="{{paintings.[0].description}}">-->
-  </a>
+  <div class="card-header">
+    <h3 type="button" name="answer" value="Show Text Field" onclick="onButtonClick()">{{title}}</h3>
+    <p>{{user.username}}</p>
+  </div>
+  <div class="card-body">
+     <p>{{content}}</p>
+  </div>
+  <p class="hide" id="commentWord">Comment</p>
+  <form class="form new-comment-form">
+    <input class="hide" type="text" id="textInput" placeholder="Enter comment here" />
+    <input type="hidden" id="post_id" value="{{post_id}}"/>
+    <button type="submit" class="hide" id="submit">Submit</button>
+  </form>
+  <div class="card-footer">
+  {{#each comments as |comment|}}
+    <div>{{comment.body}}</div>
+  {{/each}}
+  </div>
 </section>

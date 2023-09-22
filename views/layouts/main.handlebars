@@ -4,26 +4,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Museum</title>
-  <link rel="stylesheet" type="text/css" href="/css/jass.css">
+  <title>Geek Tech Blog</title>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
 <body>
-  <header>
-    <h1>Welcome to the Four Seasons Museum</h1>
-  </header>
-  <nav>
-    <a href="/">Home</a>
-  </nav>
-  <main>
-    <aside>
-      <h2>Enjoy the galleries!</h2>
-    </aside>
-    <div class="gallery">
-      {{{body}}}
+  <div class="flex-column justify-space-around">
+    <div class="topnav">
+      <a class="active" href="/">Home</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#logout">Logout</a>
     </div>
-  </main>
+    <header class="display-flex justify-space-between align-center p-2">
+      <div style="padding-left:16px">
+        <h2>Geek Tech Blog</h2>
+      </div>
+      <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    <footer>
+      
+    </footer>
+  </div>
+
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
+    
+
 
 </html>
